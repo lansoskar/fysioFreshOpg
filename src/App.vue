@@ -1,27 +1,44 @@
+<!--html og dom elementer-->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <header class="center"><p class="headerText">Kanban board opgave fra FysioFresh🌻</p></header>
+  <div class="margins">
+    <KanbanBoard/>
+  </div>
+
 </template>
 
+<!--data manipulation og funktioner-->
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import KanbanBoard from "./components/KanbanBoard.vue";
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    KanbanBoard,
   }
 });
 </script>
 
+<!--css for komponent-->
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.center {
+  padding: 4px;
+  background: hsl(0, 55.6%, 14.1%);
+  margin-bottom: 1.5em;
+}
+
+.headerText {
+  color: hsl(26.7, 100%, 98.2%);
+  letter-spacing: 1px;
+  font-size: 1.5em;
+
+  margin-left: 0.5em;
+}
+
+.margins {
+  display: flex;
+  max-width: 85%;
+  margin-left: 3em;
 }
 </style>
