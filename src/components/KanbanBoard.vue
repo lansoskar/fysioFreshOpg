@@ -38,7 +38,7 @@ import KanbanColumn from "./KanbanColumn.vue";
 export default defineComponent({
   name: "KanbanBoard",
   components: {KanbanColumn},
-  emits: [], //??
+  emits: [],
   setup() {
     const KanbanColumns = reactive([
       {
@@ -55,12 +55,12 @@ export default defineComponent({
     const selectedCard = ref<any>(null);
 
 
-    // tilføj card til column
+    // tilføj card til specified column, med dens column card array
     const addCard = ({columnId, card}: { columnId: number; card: any }) => {
       const column = KanbanColumns.find((col) => col.id === columnId);
       if (column) column.cards.push(card);
     };
-    // dragstart valgte card bliver payload
+    // dragstart valgte card data bliver payload
     const onDragStart = (payload: { card: any; cardIndex: number; columnId: number }) => {
       draggedCard.value = payload;
     };
@@ -81,23 +81,23 @@ export default defineComponent({
       // reset payload
       draggedCard.value = null;
     };
-    // åben modal med valgte card values
+    // åben modal med valgte card data til display
     const openCardModal = (card: any) => {
       selectedCard.value = card;
       modalVisible.value = true;
     }
-    // lukker modal, måske også tilføje fjerne temp data
+    // lukker modal
     const closeModal = () => {
       modalVisible.value = false;
 
     }
-    // sletter card baseret på column, laver et nyt array uden det valgte card
+    // sletter card baseret på column, laver et nyt array ved at filtrere valgte card ud
     const deleteCard = () => {
       const column = KanbanColumns.find((col) =>
           col.cards.includes(selectedCard.value)
       );
       if (column) {
-        column.cards = column.cards.filter((card) => card !== selectedCard.value); // får en error men virker? usikker på type måske?
+        column.cards = column.cards.filter((card) => card !== selectedCard.value);
         closeModal();
       }
     };
@@ -152,7 +152,7 @@ export default defineComponent({
 .description-input {
   font-family: Roboto;
   padding: 15px;
-  background-color: #f1f0f0;
+  background-color: #d9d8d8;
   border-radius: 10px;
   width: 100%;
   height: 15em;

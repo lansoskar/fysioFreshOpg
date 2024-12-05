@@ -26,11 +26,10 @@ export default defineComponent({
   },
   emits: ["dragStart"],
   setup(props, { emit }) {
-    // funktion til dragstart tage data af valgte card og sende videre
+    // funktion til dragstart tage data af valgte card (index og column) og emit videre
     const onDragStart = (event: DragEvent) => {
       event.dataTransfer?.setData("cardIndex", props.index.toString());
       event.dataTransfer?.setData("columnIndex", props.columnIndex.toString());
-
 
       emit("dragStart", {
         card: props.card,

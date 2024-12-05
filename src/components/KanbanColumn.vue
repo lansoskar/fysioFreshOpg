@@ -69,11 +69,11 @@ export default defineComponent({
     const onDrop = () => {
       emit("drop", {targetColumnId: props.id});
     };
-
+    // tillad dropping ved at prevent default dragover behaviour
     const onDragOver = (event: DragEvent) => {
       event.preventDefault();
     };
-
+    //emit event til at åbne modal for valgte card
     const openModal = (card: any) => {
       emit("open-modal", card)
     }
